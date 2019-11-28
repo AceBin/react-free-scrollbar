@@ -1,18 +1,15 @@
-# React-free-scrollbar
+# React-free-scrollbar-for-control
 
-[![npm version](https://badge.fury.io/js/react-free-scrollbar.svg)](https://badge.fury.io/js/react-free-scrollbar)
+[![npm version](https://d25lcipzij17d.cloudfront.net/badge.svg?id=js&type=6&v=1.0.0&x2=0)](https://www.npmjs.com/package/react-free-scrollbar-for-control)
 
-A react module for creating customizable scroll area.
+A react module for creating customizable scroll area. (can get scrollbar postion) (forked from [http://fuermosi777.github.io/react-free-scrollbar/](http://fuermosi777.github.io/react-free-scrollbar/))
+
 
 Visit [http://fuermosi777.github.io/react-free-scrollbar/](http://fuermosi777.github.io/react-free-scrollbar/) to see [demo](http://fuermosi777.github.io/react-free-scrollbar/).
 
 ## Install
 
-    $ npm install --save react-free-scrollbar
-
-or
-
-    $ yarn add react-free-scrollbar
+    $ npm install --save react-free-scrollbar-for-control
 
 ## Usage
 
@@ -76,7 +73,7 @@ Options: "bottom", "bottom right", "top right", "right", `{top: 20, left: 30}`
 
 The browser scroll bar width. Default: "17px". [It should fit for most browsers](https://codepen.io/sambible/post/browser-scrollbar-widths).
 
-### `onScrollbarScroll: Function` optional
+### `onScrollbarScroll: Function (pos: Pos)` optional
 
 Fired when the scrollbar is scrolled.
 

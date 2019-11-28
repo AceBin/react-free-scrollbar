@@ -212,7 +212,7 @@ var FreeScrollbar = /** @class */ (function (_super) {
             };
             _this.setState({ handlerPos: pos });
             if (_this.scrollbarScrollThrottle) {
-                _this.scrollbarScrollThrottle();
+                _this.scrollbarScrollThrottle(pos);
             }
         };
         _this.handleHandlerMouseDown = function (e, d) {
@@ -328,8 +328,8 @@ var FreeScrollbar = /** @class */ (function (_super) {
             right: this.state.handlerPos.right + '%',
             opacity: this.state.hideHandler ? 0 : 1,
         };
-        return (React.createElement("div", { className: "FreeScrollbar " + this.props.className, style: __assign({}, this.props.style, styles.main) },
-            React.createElement("div", { className: "FreeScrollbar-container", style: __assign({}, containerStyles, styles.container), ref: function (container) { return (_this.el = container); }, onScroll: this.handlerContainerScroll }, this.props.children),
+        return (React.createElement("div", { className: "FreeScrollbar " + this.props.className, style: __assign(__assign({}, this.props.style), styles.main) },
+            React.createElement("div", { className: "FreeScrollbar-container", style: __assign(__assign({}, containerStyles), styles.container), ref: function (container) { return (_this.el = container); }, onScroll: this.handlerContainerScroll }, this.props.children),
             this.state.showVeriticalTrack ? (React.createElement("div", { className: "FreeScrollbar-vertical-track " + (this.props.className ? this.props.className + '-vertical-track' : ''), style: this.props.className
                     ? Object.assign(verticalTrackStyles, styles.track.vertical)
                     : Object.assign(verticalTrackStyles, styles.track.vertical, styles.track.verticalCustomize) },

@@ -99,7 +99,7 @@ export interface Props {
   // Initial scroll bar position.
   start?: StartOption;
   browserOffset?: string;
-  onScrollbarScroll?: () => void;
+  onScrollbarScroll?: (pos: Pos) => void;
   onScrollbarScrollTimeout?: number;
 }
 
@@ -131,7 +131,7 @@ export default class FreeScrollbar extends React.PureComponent<Props, State> {
   private lastMousePos: { top: number; left: number } = null;
   private lastContainerScrollTop = 0;
   private lastContainerScrollLeft = 0;
-  private handlerHider: number = null;
+  private handlerHider: any = null;
 
   public constructor(props: Props) {
     super(props);
@@ -157,7 +157,7 @@ export default class FreeScrollbar extends React.PureComponent<Props, State> {
 
     let canRun = true;
 
-    return function(...args: any) {
+    return function (...args: any) {
       if (canRun) {
         canRun = false;
         func(...args);
@@ -265,7 +265,7 @@ export default class FreeScrollbar extends React.PureComponent<Props, State> {
     let bottom =
       (1 -
         ((el.scrollTop + this.offsetHeight) / (el.scrollHeight - this.offsetHeight)) *
-          (1 - this.offsetHeight / this.lastScrollHeight)) *
+        (1 - this.offsetHeight / this.lastScrollHeight)) *
       100;
     if (bottom < 0) bottom = 0;
     let left =
@@ -275,7 +275,7 @@ export default class FreeScrollbar extends React.PureComponent<Props, State> {
     let right =
       (1 -
         ((el.scrollLeft + this.offsetWidth) / (el.scrollWidth - this.offsetWidth)) *
-          (1 - this.offsetWidth / this.lastScrollWidth)) *
+        (1 - this.offsetWidth / this.lastScrollWidth)) *
       100;
     if (right < 0) right = 0;
     let pos = {
@@ -287,7 +287,7 @@ export default class FreeScrollbar extends React.PureComponent<Props, State> {
     this.setState({ handlerPos: pos });
 
     if (this.scrollbarScrollThrottle) {
-      this.scrollbarScrollThrottle();
+      this.scrollbarScrollThrottle(pos);
     }
   };
 
@@ -329,12 +329,12 @@ export default class FreeScrollbar extends React.PureComponent<Props, State> {
   /**
    * Set the scrolling position manually.
    */
-  public setPosition = (pos: {top?: number, left?: number}) => {
+  public setPosition = (pos: { top?: number, left?: number }) => {
     if (pos.top) {
-    this.el.scrollTop = pos.top;
+      this.el.scrollTop = pos.top;
     }
     if (pos.left) {
-    this.el.scrollLeft = pos.left;
+      this.el.scrollLeft = pos.left;
     }
   }
 
@@ -344,13 +344,13 @@ export default class FreeScrollbar extends React.PureComponent<Props, State> {
       paddingRight: this.props.fixed
         ? 0
         : this.state.showHorizontalTrack
-        ? this.props.tracksize
-        : 0,
+          ? this.props.tracksize
+          : 0,
       paddingBottom: this.props.fixed
         ? 0
         : this.state.showVeriticalTrack
-        ? this.props.tracksize
-        : 0,
+          ? this.props.tracksize
+          : 0,
       right: `-${this.props.browserOffset}`,
       bottom: `-${this.props.browserOffset}`,
     };
@@ -379,7 +379,7 @@ export default class FreeScrollbar extends React.PureComponent<Props, State> {
       opacity: this.state.hideHandler ? 0 : 1,
     };
 
-    
+
 
     return (
       <div
@@ -396,20 +396,20 @@ export default class FreeScrollbar extends React.PureComponent<Props, State> {
           <div
             className={`FreeScrollbar-vertical-track ${
               this.props.className ? this.props.className + '-vertical-track' : ''
-            }`}
+              }`}
             style={
               this.props.className
                 ? Object.assign(verticalTrackStyles, styles.track.vertical)
                 : Object.assign(
-                    verticalTrackStyles,
-                    styles.track.vertical,
-                    styles.track.verticalCustomize
-                  )
+                  verticalTrackStyles,
+                  styles.track.vertical,
+                  styles.track.verticalCustomize
+                )
             }>
             <div
               className={`FreeScrollbar-vertical-handler ${
                 this.props.className ? this.props.className + '-vertical-handler' : ''
-              }`}
+                }`}
               onMouseDown={(event) => {
                 this.handleHandlerMouseDown(event, Direction.Vertical);
               }}
@@ -417,10 +417,10 @@ export default class FreeScrollbar extends React.PureComponent<Props, State> {
                 this.props.className
                   ? Object.assign(verticalHandlerStyles, styles.handler.vertical)
                   : Object.assign(
-                      verticalHandlerStyles,
-                      styles.handler.vertical,
-                      styles.handler.verticalCustomize
-                    )
+                    verticalHandlerStyles,
+                    styles.handler.vertical,
+                    styles.handler.verticalCustomize
+                  )
               }
             />
           </div>
@@ -429,20 +429,20 @@ export default class FreeScrollbar extends React.PureComponent<Props, State> {
           <div
             className={`FreeScrollbar-horizontal-track ${
               this.props.className ? this.props.className + '-horizontal-track' : ''
-            }`}
+              }`}
             style={
               this.props.className
                 ? Object.assign(horizontalTrackStyles, styles.track.horizontal)
                 : Object.assign(
-                    horizontalTrackStyles,
-                    styles.track.horizontal,
-                    styles.track.horizontalCustomize
-                  )
+                  horizontalTrackStyles,
+                  styles.track.horizontal,
+                  styles.track.horizontalCustomize
+                )
             }>
             <div
               className={`FreeScrollbar-horizontal-handler ${
                 this.props.className ? this.props.className + '-horizontal-handler' : ''
-              }`}
+                }`}
               onMouseDown={(event) => {
                 this.handleHandlerMouseDown(event, Direction.Horizontal);
               }}
@@ -450,10 +450,10 @@ export default class FreeScrollbar extends React.PureComponent<Props, State> {
                 this.props.className
                   ? Object.assign(horizontalHandlerStyles, styles.handler.horizontal)
                   : Object.assign(
-                      horizontalHandlerStyles,
-                      styles.handler.horizontal,
-                      styles.handler.horizontalCustomize
-                    )
+                    horizontalHandlerStyles,
+                    styles.handler.horizontal,
+                    styles.handler.horizontalCustomize
+                  )
               }
             />
           </div>
@@ -462,7 +462,7 @@ export default class FreeScrollbar extends React.PureComponent<Props, State> {
           <div
             className={`FreeScrollbar-square ${
               this.props.className ? this.props.className + '-square' : ''
-            }`}
+              }`}
             style={styles.square as React.CSSProperties}
           />
         ) : null}

@@ -25,7 +25,7 @@ export interface Props {
     tracksize?: string;
     start?: StartOption;
     browserOffset?: string;
-    onScrollbarScroll?: () => void;
+    onScrollbarScroll?: (pos: Pos) => void;
     onScrollbarScrollTimeout?: number;
 }
 export default class FreeScrollbar extends React.PureComponent<Props, State> {
@@ -43,7 +43,7 @@ export default class FreeScrollbar extends React.PureComponent<Props, State> {
     private handlerHider;
     constructor(props: Props);
     private throttle;
-    scrollbarScrollThrottle: () => void;
+    scrollbarScrollThrottle: (pos: Pos) => void;
     componentDidMount(): void;
     componentWillUnmount(): void;
     componentDidUpdate(): void;

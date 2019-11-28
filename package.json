@@ -1,27 +1,27 @@
 {
-  "name": "react-free-scrollbar",
-  "version": "0.3.4",
-  "description": "A react module for creating customizable scroll area",
+  "name": "react-free-scrollbar-for-control",
+  "version": "1.0.0",
+  "description": "A react module for creating customizable scroll area. (can get scrollbar postion)",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "scripts": {
     "dev": "webpack-dev-server --env=dev --config webpack.config.dev.js",
     "build-demo": "webpack --mode=production --env=prod --config webpack.config.prod.js --progress --colors",
-    "dist": "tsc" 
+    "dist": "tsc"
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/fuermosi777/react-free-scrollbar.git"
+    "url": "https://github.com/AceBin/react-free-scrollbar.git"
   },
   "keywords": [
     "react"
   ],
-  "author": "Hao Liu <liuhao1990@gmail.com> (http://liuhao.im)",
+  "author": "Ace Bin <yhb71868@sina.com>",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/fuermosi777/react-free-scrollbar/issues"
+    "url": "https://github.com/AceBin/react-free-scrollbar/issues"
   },
-  "homepage": "https://github.com/fuermosi777/react-free-scrollbar#readme",
+  "homepage": "https://github.com/AceBin/react-free-scrollbar#readme",
   "devDependencies": {
     "@babel/core": "^7.4.3",
     "@babel/plugin-proposal-class-properties": "^7.4.0",
